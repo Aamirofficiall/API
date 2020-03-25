@@ -1,0 +1,8 @@
+Djanog==3.0.2
+djangorestframework==3.11.0
+Pillow==7.0.0
+pytesseract==0.3.3
+python==3.8.1
+virtualenv==16.7.9
+virtualenvwrapper-win==1.2.5
+wrapt==1.11.2
