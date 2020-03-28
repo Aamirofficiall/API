@@ -3,6 +3,8 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path,include
 from django.conf.urls import url 
 router = DefaultRouter()
+router.register('profile',UserView)
+
 # router.register('profile',views.ProfileView)
 router.register('register',views.UserView)
 router.register('card',views.CardView)

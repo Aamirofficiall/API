@@ -6,18 +6,22 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
+
+
 class Profile(models.Model):
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name="users")
-    mobile_no=models.CharField(max_length=15)
-    home_no=models.CharField(max_length=15,null=True)
+    phone_numbers=models.CharField(max_length=30,choices=Numbers.objects.all(),default='home')
     address=models.TextField()
     website=models.URLField(null=True)
     position=models.CharField(max_length=30)
     profile_pic=models.ImageField(upload_to='media/Profile/',null=True)
     
 
+
 class Card(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name=models.CharField(max_length=30)
     card_back=models.ImageField(upload_to='media/Card/')
     card_front=models.ImageField(upload_to='media/Card/',null=True)
     company=models.CharField(max_length=30)
@@ -33,7 +37,6 @@ class Card(models.Model):
     def __str__(self):
         return self.id
     
-
 
 @receiver(post_save,sender=User)
 def crete_auth_token(sender,instance=None,created=False,**kwargs):

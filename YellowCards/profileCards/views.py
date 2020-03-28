@@ -97,6 +97,7 @@ def login(request):
 
 from django.contrib.auth import logout
 from rest_framework.views import APIView
+
 class Logout(APIView):
     def get(self, request, format=None):
         # simply delete the token to force a login
@@ -106,7 +107,7 @@ class Logout(APIView):
 
 @api_view(['POST',])
 def reg(request):
-    
+
     if request.method=='POST':
         data={}
         ser=UserSer(data=request.data)
